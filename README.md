@@ -92,6 +92,47 @@ The current implementation explores a two-dimensional recognition model:
 ```
 Identity → Internal Logic → Recognition → Organization Space → Stable Organization
 ```
+## Recognition Function
+
+### Purpose
+
+Recognition Organization intentionally avoids defining a single universal recognition function.
+
+Instead, **Recognition** is treated as a conceptual mechanism that allows an entity to derive its organizational position from its own identity and internal logic.
+
+### Abstract Definition
+
+Let:
+- `E` be the set of entities
+- `S` be the organization space
+
+The Recognition Function is defined as:
+
+**R : E → S**
+
+**R(L(e)) = p**  
+where `L(e)` is the internal logic of entity `e`, and `p` is the resulting organizational position.
+
+### Recognition Rules
+
+Different rules interpret the same identity differently:
+
+- `BinaryRecognition`
+- `DigitSumRecognition`
+- `PrimeFactorRecognition`
+- `SemanticRecognition` (future)
+- `StructuralRecognition` (future)
+
+### Axioms
+
+1. **Identity Exists** — Every entity has identity before organization.
+2. **Internal Logic Exists** — Identity can produce internal logical properties.
+3. **Recognition Uses Internal Information**
+4. **Recognition Produces a Decision**
+5. **Organization Emerges** — from the collection of individual recognition decisions.
+
+**Recognition does not ask "How does this entity compare to others?"**  
+**It asks: "What can this entity determine about itself?"**
 
 ### Architecture
 
