@@ -15,6 +15,14 @@ The repository contains conceptual implementations developed as research prototy
 This repository does **not** propose a replacement for existing sorting algorithms. Instead, it presents a conceptual framework for exploring recognition-based organization.
 
 ---
+> **Research Playground**
+
+This repository is intentionally designed as a research playground.
+
+Its purpose is to explore, refine, and experimentally evaluate alternative ideas related to recognition-based organization.
+
+The concepts, architectures, and prototypes presented here are expected to evolve as new observations and experimental results become available.
+---
 
 # Motivation
 
