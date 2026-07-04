@@ -161,7 +161,15 @@ Organization Engine
 The organization process becomes
 
 ```
+Entity
+
+↓
+
 Recognition
+
+↓
+
+Recognition Decision
 
 ↓
 
@@ -169,7 +177,7 @@ Organization Space
 
 ↓
 
-Stable Organization
+Organization
 ```
 
 No pairwise comparison is required inside the organization process itself.
