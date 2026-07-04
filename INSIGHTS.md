@@ -59,7 +59,7 @@ Open research directions. Not yet supported by the reference implementations.
 
 - **Dynamic identity.** Internal logic may define the permitted transformations of an identity *through time*; the integrity of an identity would then determine the consistency of its internal logic. The current prototypes treat all identities as static — what happens to an established organization when an entity changes is an open question.
 - **Independent communication topology.** The Communication Topology may be separable from the Organization Space. In the current implementation the channel directly triggers a deeper recognition round inside the same space, so the two layers are coupled; their independence remains to be demonstrated.
-- **Richer recognition rules.** `PrimeFactorRecognition`, `SemanticRecognition`, and `StructuralRecognition` remain unimplemented. Rule pluralism is established in principle; its behavior under rules with non-trivial semantics is not.
+- **Richer recognition rules.** `SemanticRecognition` now has a reference prototype (`recognition_semantic.py`) demonstrating organization as topology rather than order — the first rule not reducible to a distribution sort. `PrimeFactorRecognition` and `StructuralRecognition` remain unimplemented.
 - **Organization as evolution of decisions.** Organization may be viewable as the evolution of Recognition Decisions over successive rounds — a process-centric formalization that has not yet been written down.
 
 ---
