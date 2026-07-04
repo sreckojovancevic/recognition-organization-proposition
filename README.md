@@ -127,6 +127,60 @@ No pairwise comparison is required inside the organization process itself.
 
 ---
 
+## Recognition Function
+
+Recognition Organization intentionally avoids defining a single universal recognition function. Instead, **Recognition** is treated as a conceptual mechanism that allows an entity to derive its organizational position from its own **identity** and **internal logic**.
+
+### Abstract Definition
+
+Let:
+- `E` be the set of entities
+- `S` be the organization space
+
+The Recognition Function is defined as:
+
+**R : E → S**
+
+Recognition maps an entity to a position inside an organization space. Viewed as a two-step process:
+
+**Identity → Internal Logic → Recognition → Organization Position**
+
+Formally:
+
+**R(L(e)) = p**
+
+where `e` is an entity, `L(e)` is the entity's internal logic, and `p` is the resulting position.
+
+### Recognition Rules
+
+Recognition is **not** a single algorithm. Different Recognition Rules may interpret the same entity differently. For a given rule `r`:
+
+**Rr(e) = p**
+
+Examples: `BinaryRecognition`, `DigitSumRecognition`, `PrimeFactorRecognition` (future), `SemanticRecognition` (future), `StructuralRecognition` (future).
+
+The same entity may occupy **different positions** under different recognition rules.
+
+### Conceptual Interpretation
+
+Recognition does not ask: *"How does this entity compare to another entity?"*
+Recognition asks: *"What can this entity determine about itself?"*
+
+The resulting organizational position emerges from the entity's recognized characteristics rather than from iterative pairwise comparison.
+
+### Recognition Axioms
+
+1. **Identity Exists** — Every entity possesses an identity before organization begins.
+2. **Internal Logic Exists** — An entity's identity can produce internal logical properties.
+3. **Recognition Uses Internal Information** — Recognition operates on information available from the entity and the active recognition rule.
+4. **Recognition Produces a Decision** — Recognition generates an organizational decision or position.
+5. **Organization Emerges** — Organization emerges from the collection of recognition decisions produced by all participating entities.
+
+**Python Reference Implementation**
+➡️ [`examples/recognition_function.py`](./examples/recognition_function.py)
+
+---
+
 ## Recognition Topology (3D) — Communication as a Protocol
 
 The third dimension addresses the central research question:
@@ -209,6 +263,7 @@ It does **not** claim to introduce a new sorting algorithm. Instead, it proposes
 | Prototype | Description |
 |---|---|
 | [`recognition_hello_world.py`](./examples/recognition_hello_world.py) | The starting point: numbers organizing themselves by recognizing their own bits |
+| [`recognition_function.py`](./examples/recognition_function.py) | The Recognition Function `R : E → S` with pluggable rules (`BinaryRecognition`, `DigitSumRecognition`) |
 | [`recognition_2d.py`](./examples/recognition_2d.py) | Two-dimensional Recognition Organization reference implementation |
 | [`recognition_3d.py`](./examples/recognition_3d.py) | Recognition Topology with a real communication protocol (Z axis); self-testing, verified against `sorted()` with a runtime no-comparison guard |
 
@@ -223,6 +278,7 @@ recognition-organization-proposition/
 ├── LICENSE
 └── examples/
     ├── recognition_hello_world.py
+    ├── recognition_function.py
     ├── recognition_2d.py
     └── recognition_3d.py
 ```
