@@ -15,6 +15,8 @@ The repository contains conceptual implementations developed as research prototy
 
 > **This repository does not propose a replacement for existing sorting algorithms.** It presents a conceptual framework for exploring recognition-based organization.
 
+📌 For the distilled findings of this research — separated into established insights and open hypotheses — see **[INSIGHTS.md](./INSIGHTS.md)**.
+
 ---
 
 ## Research Playground
@@ -217,6 +219,7 @@ It does **not** claim to introduce a new sorting algorithm. Instead, it proposes
 ```bash
 recognition-organization-proposition/
 ├── README.md
+├── INSIGHTS.md
 ├── LICENSE
 └── examples/
     ├── recognition_hello_world.py
