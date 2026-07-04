@@ -92,15 +92,24 @@ The current implementation explores a two-dimensional recognition model:
 ```
 Identity → Internal Logic → Recognition → Organization Space → Stable Organization
 ```
-## Recognition Function
 
-### Purpose
+recognition_function_addition.md
+
+# Recognition Function
+
+## Purpose
 
 Recognition Organization intentionally avoids defining a single universal recognition function.
 
-Instead, **Recognition** is treated as a conceptual mechanism that allows an entity to derive its organizational position from its own identity and internal logic.
+Instead, **Recognition** is treated as a conceptual mechanism that allows an entity to derive its organizational position from its own **identity** and **internal logic**.
 
-### Abstract Definition
+## Python Reference Implementation
+
+**Recognition Function**
+
+➡️ [`examples/recognition_function.py`](https://github.com/sreckojovancevic/recognition-organization-proposition/blob/main/examples/recognition_function.py)
+
+## Abstract Definition
 
 Let:
 - `E` be the set of entities
@@ -110,29 +119,82 @@ The Recognition Function is defined as:
 
 **R : E → S**
 
-**R(L(e)) = p**  
-where `L(e)` is the internal logic of entity `e`, and `p` is the resulting organizational position.
+**Meaning:**
 
-### Recognition Rules
+Recognition maps an entity to a position inside an organization space.
 
-Different rules interpret the same identity differently:
+---
 
+**Internal Logic Model**
+
+Recognition can be viewed as a two-step process:
+
+**Identity**  
+↓  
+**Internal Logic**  
+↓  
+**Recognition**  
+↓  
+**Organization Position**
+
+Formally:
+
+**R(L(e)) = p**
+
+where:
+- `e` is an entity
+- `L(e)` is the entity's internal logic
+- `p` is the resulting position
+
+## Recognition Rules
+
+Recognition is **not** a single algorithm.
+
+Different Recognition Rules may interpret the same entity differently.
+
+For a given rule `r`:
+
+**Rr(e) = p**
+
+**Examples:**
 - `BinaryRecognition`
 - `DigitSumRecognition`
-- `PrimeFactorRecognition`
+- `PrimeFactorRecognition` (future)
 - `SemanticRecognition` (future)
 - `StructuralRecognition` (future)
 
-### Axioms
+The same entity may occupy **different positions** under different recognition rules.
 
-1. **Identity Exists** — Every entity has identity before organization.
-2. **Internal Logic Exists** — Identity can produce internal logical properties.
-3. **Recognition Uses Internal Information**
-4. **Recognition Produces a Decision**
-5. **Organization Emerges** — from the collection of individual recognition decisions.
+## Conceptual Interpretation
 
-**Recognition does not ask "How does this entity compare to others?"**  
-**It asks: "What can this entity determine about itself?"**
+Recognition does not ask:
+
+> "How does this entity compare to another entity?"
+
+Recognition asks:
+
+> "What can this entity determine about itself?"
+
+The resulting organizational position emerges from the entity's recognized characteristics rather than from iterative pairwise comparison.
+
+## Recognition Axioms
+
+### Axiom 1 — Identity Exists
+Every entity possesses an identity before organization begins.
+
+### Axiom 2 — Internal Logic Exists
+An entity's identity can produce internal logical properties.
+
+### Axiom 3 — Recognition Uses Internal Information
+Recognition operates on information available from the entity and the active recognition rule.
+
+### Axiom 4 — Recognition Produces a Decision
+Recognition generates an organizational decision or position.
+
+### Axiom 5 — Organization Emerges
+Organization emerges from the collection of recognition decisions produced by all participating entities.
+
+---
 
 ### Architecture
 
