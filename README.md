@@ -4,27 +4,27 @@
 
 ---
 
-## Abstract
+# Abstract
 
-This repository presents a conceptual proposition exploring an alternative approach to organization.
+Recognition Organization is a conceptual proposition that explores an alternative approach to organization.
 
 Instead of treating organization as the result of repeated pairwise comparison, this work investigates whether entities can organize themselves by recognizing their own internal logic.
 
-The repository contains several conceptual implementations developed as research prototypes rather than production algorithms.
+The repository contains conceptual implementations developed as research prototypes intended to support observation, experimentation, discussion, and future research.
 
-The purpose of this work is not to replace existing sorting algorithms, but to explore an alternative organizational paradigm that may inspire future research.
+This repository does **not** propose a replacement for existing sorting algorithms. Instead, it presents a conceptual framework for exploring recognition-based organization.
 
 ---
 
 # Motivation
 
-Traditional sorting algorithms are primarily comparison-driven.
+Traditional organizational algorithms primarily rely on repeated pairwise comparison.
 
 ```
 A > B ?
 ```
 
-Recognition Organization proposes a different perspective.
+Recognition Organization explores a different perspective.
 
 ```
 Who am I?
@@ -38,7 +38,7 @@ What is my internal logic?
 Where do I naturally belong?
 ```
 
-The central idea is that organization may emerge from recognition rather than comparison.
+Instead of repeatedly comparing entities, the proposition investigates whether organization may emerge through recognition.
 
 ---
 
@@ -48,31 +48,31 @@ The proposition is based on several conceptual principles.
 
 ## Identity precedes organization.
 
-Every entity possesses an identity before it participates in any organizational process.
+Every entity possesses an identity before participating in any organizational process.
 
 ---
 
 ## Internal logic precedes interaction.
 
-Each identity contains its own internal logic.
+Each entity contains its own internal logic.
 
-The objective is to understand that logic before defining external behavior.
+Understanding that logic precedes defining interaction with other entities.
 
 ---
 
 ## Recognition precedes comparison.
 
-Instead of repeatedly comparing entities,
+Rather than repeatedly comparing entities,
 
-each entity recognizes itself according to a recognition rule.
+each entity recognizes itself according to an active recognition rule.
 
 ---
 
 ## Organization emerges from recognition.
 
-The organization engine orchestrates recognition.
+The Organization Engine orchestrates recognition.
 
-Entities determine their own placement.
+Entities determine their own temporary placement.
 
 The engine does not compare entities directly.
 
@@ -84,13 +84,14 @@ Rules are not viewed as restrictions.
 
 Rules define stable interactions.
 
-They determine which relations are allowed inside a system.
+They determine which organizational relations are allowed.
 
 ---
 
 ## Communication preserves consistency.
 
 Whenever multiple recognition processes coexist,
+
 communication becomes responsible for
 
 - synchronization
@@ -103,7 +104,7 @@ communication becomes responsible for
 
 # Current Proposition (2D)
 
-Current implementations use a two-dimensional organizational model.
+The current implementation explores a two-dimensional recognition model.
 
 ```
 Identity
@@ -125,7 +126,7 @@ Organization Space
 Stable Organization
 ```
 
-The current architecture consists of
+The architecture consists of four conceptual components.
 
 ```
 Entity
@@ -141,35 +142,6 @@ Organization Space
 ↓
 
 Organization Engine
-```
-
-Example
-
-```python
-class Entity:
-
-    def recognize(self, rule, level):
-        return rule.decision(self, level)
-```
-
-```python
-class RecognitionRule:
-
-    def decision(self, entity, level):
-        ...
-
-    def levels(self):
-        ...
-```
-
-```python
-class OrganizationSpace:
-
-    def accept(self, entity, room):
-        ...
-
-    def collect(self):
-        ...
 ```
 
 The organization process becomes
@@ -190,18 +162,35 @@ No pairwise comparison is required inside the organization process itself.
 
 ---
 
+## Python Reference Implementation (2D)
+
+The complete reference implementation of the current two-dimensional Recognition Organization model is available here.
+
+**Recognition Organization (2D)**
+
+➡️ [`examples/recognition_2d.py`](./examples/recognition_2d.py)
+
+This prototype demonstrates the current Recognition Organization model based on
+
+- Entity
+- Recognition Rule
+- Organization Space
+- Organization Engine
 # Future Work
 
 ## Recognition Topology
 
-Future work investigates whether introducing an additional organizational dimension can improve recognition-based organization.
+The current implementation explores organization through a two-dimensional recognition model.
 
-The third dimension is not intended as geometric space.
+Future work investigates whether introducing an additional organizational dimension can improve communication between independent recognition processes.
 
-Instead, it represents communication.
+The additional dimension is **not** interpreted as geometric space.
+
+Instead, it represents an organizational communication topology.
 
 ```
           Z
+          │
           │
           │
           │
@@ -222,36 +211,20 @@ Y = LSD Recognition
 Z = Communication
 ```
 
+The central research question becomes:
+
+> *Can some apparent conflicts in two-dimensional organization originate from missing organizational dimensions rather than from limitations of the recognition process itself?*
+
 ---
 
 ## Communication Pipe
 
-The communication layer is responsible for
+Within the proposed topology, the third dimension represents communication rather than spatial placement.
+
+Conceptually,
 
 ```
-Synchronization
-
-↓
-
-Flow Control
-
-↓
-
-Negotiation
-
-↓
-
-Conflict Prevention
-
-↓
-
-Stability
-```
-
-Conceptually
-
-```
-MSD Process
+MSD Recognition
 
         ⇅
 
@@ -259,34 +232,38 @@ Communication Pipe
 
         ⇅
 
-LSD Process
+LSD Recognition
 ```
 
-The Communication Pipe is not considered a spatial coordinate.
+The Communication Pipe is envisioned as an organizational layer responsible for
 
-It represents an organizational communication channel.
+- synchronization
+- flow control
+- negotiation
+- conflict prevention
+- organizational stability
+
+Unlike conventional spatial coordinates, the communication layer exists to coordinate concurrent recognition processes rather than to determine physical location.
 
 ---
 
-## Recognition Topology
+## Recognition Topology Evolution
 
-The conceptual evolution becomes
-
-Current
+Current organization
 
 ```
 Recognition
 
 ↓
 
-Buckets
+Organization Space
 
 ↓
 
-Organization
+Stable Organization
 ```
 
-Future
+Proposed topology
 
 ```
 Recognition
@@ -308,79 +285,142 @@ Negotiation
 Stable Organization
 ```
 
+The proposed communication layer is intended to become an integral part of the organization process rather than an external synchronization mechanism.
+
 ---
 
-# Ontological Perspective
+## Python Concept Prototype (3D)
 
-The work is inspired by an ontological approach to organization.
+The complete conceptual prototype exploring a three-dimensional Recognition Topology is available here.
 
-Instead of asking
+**Recognition Topology (3D Concept)**
 
-> "How should entities be organized?"
+➡️ [`examples/recognition_3d.py`](./examples/recognition_3d.py)
 
-the proposition first asks
+The prototype investigates an additional organizational dimension dedicated to communication between concurrent recognition processes.
 
-> "What is the internal logic of an identity?"
+Unlike the current two-dimensional implementation, the third dimension is interpreted as a communication topology responsible for
 
-Organization is viewed as a consequence of understanding identity rather than imposing external order.
+- synchronization
+- flow control
+- negotiation
+- conflict prevention
+- organizational stability
 
-The methodology therefore follows
+The prototype introduces the idea of **Meet-in-the-Middle Recognition**, where independent recognition processes (MSD and LSD traversal) exchange information through a shared communication layer.
 
-```
-Identity
+The implementation should be viewed as a conceptual research prototype intended to support future experimentation and discussion.
 
-↓
+---
+# Discussion
 
-Internal Logic
+Recognition Organization is intended as a conceptual research framework rather than a finalized organizational algorithm.
 
-↓
+The current implementations demonstrate one possible approach in which entities organize themselves through recognition of their own internal logic instead of repeated pairwise comparison.
 
-Recognition
+The presented Python implementations are reference prototypes whose primary purpose is to support
 
-↓
+- observation,
+- experimentation,
+- discussion,
+- refinement,
+- and future research.
 
-Communication
-
-↓
-
-Organization
-```
-
-rather than
-
-```
-Algorithm
-
-↓
-
-Comparison
-
-↓
-
-Organization
-```
+The current work intentionally focuses on conceptual clarity rather than algorithmic optimization.
 
 ---
 
 # Research Philosophy
 
-This repository intentionally uses the word **Proposition**.
+The repository intentionally uses the word **Proposition**.
 
-It does **not** claim to introduce a new optimal sorting algorithm.
+It does **not** claim to introduce a new sorting algorithm.
 
-Instead, it proposes an alternative conceptual framework for studying organization through
+Instead, it proposes a conceptual framework for exploring organization through
 
-- identity
-- internal logic
-- recognition
-- organizational topology
-- communication
-- stability
+- identity,
+- internal logic,
+- recognition,
+- organization,
+- communication,
+- and stability.
 
-The author hopes that researchers and engineers with expertise in related fields may recognize useful concepts, identify connections with existing research, or extend the ideas presented here.
+The objective is to encourage further discussion, experimentation, and formalization.
+
+The Python implementations should therefore be viewed as conceptual prototypes illustrating the proposed ideas rather than production-ready implementations.
+
+---
+
+# Reference Implementations
+
+The repository currently contains two conceptual Python implementations.
+
+| Prototype | Description |
+|-----------|-------------|
+| [`examples/recognition_2d.py`](./examples/recognition_2d.py) | Current two-dimensional Recognition Organization reference implementation. |
+| [`examples/recognition_3d.py`](./examples/recognition_3d.py) | Conceptual three-dimensional Recognition Topology prototype introducing a communication dimension. |
+
+---
+
+# Repository Structure
+
+```
+recognition-organization-proposition/
+
+│
+
+├── README.md
+
+├── LICENSE
+
+│
+
+└── examples
+
+    ├── recognition_2d.py
+
+    └── recognition_3d.py
+```
+
+---
+
+# Future Directions
+
+Possible future investigations include
+
+- Recognition Topology
+- Communication Topologies
+- Recognition Policies
+- Self-Organization
+- Distributed Recognition
+- Graph-Based Organization
+- Topological Organization
+- Concurrent Recognition Models
+- Hybrid Recognition Strategies
+
+These topics are intentionally left open for future experimentation and collaboration.
+
+---
+
+# Contributing
+
+Constructive feedback, discussion, and experimental implementations are welcome.
+
+The purpose of this repository is to encourage exploration of alternative organizational models and to provide a common starting point for future investigation.
+
+Suggestions, issues, pull requests, and independent implementations are encouraged.
+
+---
+
+# Citation
+
+If this repository contributes to your work, please consider citing the repository or referencing it appropriately.
 
 ---
 
 # License
 
 MIT License
+The implementation illustrates how organization may emerge through repeated recognition rather than pairwise comparison.
+
+---
