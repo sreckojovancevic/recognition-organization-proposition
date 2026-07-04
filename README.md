@@ -41,7 +41,21 @@ Where do I naturally belong?
 Instead of repeatedly comparing entities, the proposition investigates whether organization may emerge through recognition.
 
 ---
+## 🧪 The Starting Point: `recognition_hello_world.py`
 
+The entire concept began with a simple observation:
+
+> **Every number is its own identity.**
+
+The **`recognition_hello_world.py`** script demonstrates this idea in its purest form:
+
+- Numbers are never compared (`a > b` is never used).
+- Each number organizes itself by recognizing its own bits.
+- The result is identical to `sorted()` — but without pairwise comparison.
+
+👉 **[`examples/recognition_hello_world.py`](./examples/recognition_hello_world.py)**
+
+This is where the journey started — from *identity* to *organization*.
 # Design Principles
 
 The proposition is based on several conceptual principles.
