@@ -133,33 +133,35 @@ Recognition Organization intentionally avoids defining a single universal recogn
 
 ### Abstract Definition
 
-Let:
-- `E` be the set of entities
-- `S` be the organization space
+Recognition Organization intentionally does not prescribe a universal Recognition Function. Instead, every Recognition Rule `r ∈ ℛ` defines its own Recognition Function:
 
-The Recognition Function is defined as:
+**Rᵣ : E → S**
 
-**R : E → S**
+where:
+- `E` is the set of entities
+- `S` is the organization space
+- `ℛ` is the set of recognition rules
 
-Recognition maps an entity to a position inside an organization space. Viewed as a two-step process:
+Recognition is therefore a **family of functions** `{Rᵣ}` indexed by `ℛ` — rule pluralism is part of the definition, not a commentary on it. Each `Rᵣ` maps an entity to a position through a two-step process:
 
 **Identity → Internal Logic → Recognition → Organization Position**
 
 Formally:
 
-**R(L(e)) = p**
+**Rᵣ(L(e)) = p**
 
 where `e` is an entity, `L(e)` is the entity's internal logic, and `p` is the resulting position.
 
 ### Recognition Rules
 
-Recognition is **not** a single algorithm. Different Recognition Rules may interpret the same entity differently. For a given rule `r`:
+Recognition is **not** a single algorithm. Different Recognition Rules may interpret the same entity differently.
 
-**Rr(e) = p**
+Examples: `BinaryRecognition`, `DigitSumRecognition`, `SemanticRecognition` (prototype), `PrimeFactorRecognition` (future), `StructuralRecognition` (future).
 
-Examples: `BinaryRecognition`, `DigitSumRecognition`, `PrimeFactorRecognition` (future), `SemanticRecognition` (future), `StructuralRecognition` (future).
+The same entity may occupy **different positions** under different recognition rules. Two consequences follow by construction:
 
-The same entity may occupy **different positions** under different recognition rules.
+- **Organization is rule-relative**: there is no rule-independent "correct" position of an entity.
+- **Coexistence is rule-relative**: entities indistinguishable under one `Rᵣ` may be separated by another.
 
 ### Conceptual Interpretation
 
