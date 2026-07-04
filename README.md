@@ -218,6 +218,22 @@ This is the key conceptual distinction from distribution sorts: **conflicts are 
 
 ---
 
+## Semantic Recognition — Beyond Distribution Sorts
+
+`SemanticRecognition` is the first rule whose behavior cannot be reduced to a distribution sort. Entities are texts; there is no a-priori total order over meanings — the output is not a sorted sequence but a **semantic topology**: related texts end up in nearby rooms.
+
+Mapping to the framework: the entity's internal logic is its self-described term vector (hashing trick — computed from the entity alone), the Recognition Rule is a set of random hyperplanes (LSH), and the room signature is derived by the entity answering introspective questions ("on which side of this plane am I?"). No entity ever sees another entity.
+
+Two conceptual results:
+
+1. **The LSH parallel.** In locality-sensitive hashing, collisions are routinely resolved by adding more hash bits — literally more dimensions. The proposition's central insight — *a conflict may signal a missing organizational dimension, not a recognition error* — is the working mechanics of LSH. The 3D communication model describes something real.
+2. **Rule-relative coexistence.** Two texts sharing the full signature are semantically indistinguishable *under this rule* and coexist stably; a different rule may separate them. Identity of position is not identity of identity.
+
+**Python Reference Implementation**
+➡️ [`examples/recognition_semantic.py`](./examples/recognition_semantic.py)
+
+---
+
 ## Verification
 
 The 3D reference implementation is self-testing (`python3 examples/recognition_3d.py`):
@@ -266,6 +282,7 @@ It does **not** claim to introduce a new sorting algorithm. Instead, it proposes
 | [`recognition_function.py`](./examples/recognition_function.py) | The Recognition Function `R : E → S` with pluggable rules (`BinaryRecognition`, `DigitSumRecognition`) |
 | [`recognition_2d.py`](./examples/recognition_2d.py) | Two-dimensional Recognition Organization reference implementation |
 | [`recognition_3d.py`](./examples/recognition_3d.py) | Recognition Topology with a real communication protocol (Z axis); self-testing, verified against `sorted()` with a runtime no-comparison guard |
+| [`recognition_semantic.py`](./examples/recognition_semantic.py) | Semantic Recognition via LSH: organization as topology instead of order; self-testing (semantic locality, stable coexistence, rule pluralism, no-comparison guard) |
 
 ---
 
@@ -280,7 +297,8 @@ recognition-organization-proposition/
     ├── recognition_hello_world.py
     ├── recognition_function.py
     ├── recognition_2d.py
-    └── recognition_3d.py
+    ├── recognition_3d.py
+    └── recognition_semantic.py
 ```
 
 ---
