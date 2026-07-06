@@ -236,6 +236,35 @@ Two conceptual results:
 
 ---
 
+## Adaptive Rules — the Space Calibrates Itself
+
+Static rules exist before the data. **Adaptive rules** are calibrated *from the population they organize*: `AdaptiveLogRule` scans the announced range once and builds a log-scale map of rooms sized to that universe. Recognition itself remains introspective — the entity still only asks questions about itself against the calibrated rule.
+
+Two honest observations, stated openly:
+
+1. **Calibration is a different game.** Computing population statistics (min, max) compares *announced values* — never entities, but it is comparison. Adaptive rules relax the framework's purity at calibration time while preserving it at organization time. The calibration-free `BitLengthRule` (room = position of the entity's own highest bit, `⌊log₂⌋ + 1`) is included as the purity baseline.
+2. **Conflict → local recalibration.** A collision opens a Communication Channel which recalibrates the rule over that room's population only: the room becomes its own, finer universe. The space refines itself exactly where conflict density is highest — the adaptive form of *adding a missing dimension*. Boundary recognition ("am I the calibrated min/max of this universe?" — an equality check, not a comparison) guarantees that every round makes strict progress.
+
+**Python Reference Implementation**
+➡️ [`examples/recognition_adaptive.py`](./examples/recognition_adaptive.py)
+
+---
+
+## Morphogenesis — From Organizing a Population to Growing One Entity
+
+Every rule above answers *"where does an entity belong among others?"*. `recognition_morphogenesis.py` turns the question inward: *"how does one entity grow from its own identity into a form, and how does that form become a new identity?"*
+
+There is no population, no comparison, no sorting — one seed and a law of growth. This gives the framework's **dynamic-identity** hypothesis a concrete mechanism: a deterministic L-system (Lindenmayer, 1968), the standard model of how plants and fractals unfold from a single symbol.
+
+Mapping: identity is the *axiom* (the seed); internal logic is the *growth rule* (how each symbol rewrites itself); each generation is a *universe* hosting one step of unfolding; the produced form becomes the *new identity* that seeds the next generation. **Form → Identity → Form** — ontogenesis as recursion, echoing the adaptive model where a room becomes its own universe.
+
+Verified, emergent results (no external oracle): Lindenmayer's algae grows in length along the **Fibonacci sequence** purely from its identity; forms are given a body by a turtle interpreter and genuinely branch; and any generation's form is reusable as an identity (gen-4 form reseeded for 3 more generations equals the gen-7 form). Context-sensitive growth — where the surrounding universe feeds back, i.e. reaction–diffusion / Turing patterns — is noted as the next direction.
+
+**Python Reference Implementation**
+➡️ [`examples/recognition_morphogenesis.py`](./examples/recognition_morphogenesis.py)
+
+---
+
 ## Verification
 
 The 3D reference implementation is self-testing (`python3 examples/recognition_3d.py`):
@@ -258,6 +287,34 @@ Testing the previous `MeetInTheMiddlePipeRule` prototype produced findings that 
 - `collect()` iterated the full 256×256×32 grid (~2M coordinates) per pass.
 
 These observations were valuable: they showed that a communication dimension must be a **protocol between entities**, not another introspective coordinate. The revised implementation reflects that.
+
+---
+
+## Performance — an Honest Note
+
+A compiled Rust port of the 2D/3D recognition engine (`pravatopol`) was built to test the framework at scale — the full source is in [`rust/`](./rust). Two things came out of it.
+
+**Correctness holds at scale.** The recognition engine matches the standard library `sort()` on **100,000 randomized stress tests** — random strings up to 64 characters, 30% duplicates, empty strings included. The recursive MSD model with the communication channel is empirically correct, not just correct on toy inputs.
+
+**Two benchmarks, two questions — both kept, nothing hidden.** `bench` measures the *organization space alone*: the coordinates (`room_id`, `conflict_level`) are pre-assigned, so recognition is skipped and only placement + collection are timed (BTreeMap-with-logs vs bucket-grid variants). `bench2` measures the *full engine* on real strings, where coordinates are recognized rather than given. The first isolates the cost of the space; the second, the cost of the whole process. The numbers below are from `bench2` — the honest, full-path measurement.
+
+**It is slower than `sort()`, by design and by implementation — and that is fine.** On real strings (no pre-assigned bucket keys), the engine runs about 5–9× slower than the standard sort:
+
+| Size | Engine | `sort()` | Ratio |
+|---|---|---|---|
+| 100 | 58 µs | 6.6 µs | 8.9× |
+| 1,000 | 561 µs | 78 µs | 7.2× |
+| 10,000 | 5.5 ms | 0.9 ms | 6.0× |
+| 100,000 | 64 ms | 12 ms | 5.3× |
+
+This project **never claimed to be a faster sort**, and these numbers are reported without spin. Two honest observations:
+
+- The cost is dominated by implementation choices, not by the idea: entities are `clone()`d at every recursion depth and each group allocates a fresh `BTreeMap`. The standard sort allocates nothing and is highly cache-friendly.
+- The *ratio narrows as size grows* (8.9× → 5.3×) — the signature of a distribution method's O(n·k) against comparison sort's O(n·log n). The asymptotic trend is favorable; only the constant factor (clones, tree allocation) holds it back. A clone-free, array-bucketed implementation would close much of the gap, but chasing that is beside the point of the framework.
+
+The value demonstrated here is not speed but that **recognition-based organization is provably correct on millions of entities in a compiled language** — an engineering confirmation of the concept, not a race.
+
+Everything here is work in progress and is shown as-is, on purpose. Nothing is hidden or tuned to look better than it is — including the benchmark that skips recognition. The point of a research playground is full inspection, not a polished result.
 
 ---
 
@@ -285,6 +342,9 @@ It does **not** claim to introduce a new sorting algorithm. Instead, it proposes
 | [`recognition_2d.py`](./examples/recognition_2d.py) | Two-dimensional Recognition Organization reference implementation |
 | [`recognition_3d.py`](./examples/recognition_3d.py) | Recognition Topology with a real communication protocol (Z axis); self-testing, verified against `sorted()` with a runtime no-comparison guard |
 | [`recognition_semantic.py`](./examples/recognition_semantic.py) | Semantic Recognition via LSH: organization as topology instead of order; self-testing (semantic locality, stable coexistence, rule pluralism, no-comparison guard) |
+| [`recognition_adaptive.py`](./examples/recognition_adaptive.py) | Adaptive rules: the organization space calibrates itself from the population (log-scale interpolation) and refines locally where conflicts concentrate; includes the calibration-free `BitLengthRule` as the purity baseline |
+| [`recognition_morphogenesis.py`](./examples/recognition_morphogenesis.py) | Ontogenesis of a single entity: an L-system unfolds a seed into a form that becomes a new identity; self-testing (emergent Fibonacci growth, branching body, form-as-identity) |
+| [`rust/`](./rust) | Compiled Rust port (`pravatopol`) of the 2D/3D recognition engine; verified against `sort()` on 100,000 randomized stress tests. Run `cd rust && cargo run --release -- test` (also `bench`, `bench2`) |
 
 ---
 
@@ -294,13 +354,28 @@ It does **not** claim to introduce a new sorting algorithm. Instead, it proposes
 recognition-organization-proposition/
 ├── README.md
 ├── INSIGHTS.md
+├── .gitignore
 ├── LICENSE
-└── examples/
-    ├── recognition_hello_world.py
-    ├── recognition_function.py
-    ├── recognition_2d.py
-    ├── recognition_3d.py
-    └── recognition_semantic.py
+├── examples/
+│   ├── recognition_hello_world.py
+│   ├── recognition_function.py
+│   ├── recognition_2d.py
+│   ├── recognition_3d.py
+│   ├── recognition_semantic.py
+│   ├── recognition_adaptive.py
+│   └── recognition_morphogenesis.py
+└── rust/                        # compiled Rust port (pravatopol)
+    ├── Cargo.toml
+    ├── Cargo.lock
+    └── src/
+        ├── main.rs
+        ├── entity.rs
+        ├── recognition.rs
+        ├── channel.rs
+        ├── engine.rs
+        ├── stress_test.rs
+        ├── benchmark.rs
+        └── benchmark_engine.rs
 ```
 
 ---
